@@ -103,4 +103,3 @@ cy.get("//span[text()='Dynamic Properties']) 1tipo de elemento span 2º del tipo
 video 78
 cy.get("//span[contains(text(),'box')]) lo que hacemos aqui es buscar un tipo span que tenga la palabra box
 ----------------------------------------------------------------------------------------------------------------------
-modificado
