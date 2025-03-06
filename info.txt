@@ -1,0 +1,106 @@
+Curso cypress comprobar que este instalado 
+version de  node en el cmd con el comando
+cd\      
+node --version
+configuramos paquete Json 
+en consola comando
+npm init 
+doy acepptar hasta que sale la pestaña de la izquierda package.Json
+-----------------------------------------------------------------------------------------------------------------
+instalamos cypress con comando
+npm instal cypress --save-dev
+nos carga node_modules con paquetes y librerias
+-----------------------------------------------------------------------------------------------------------------
+en @cypress esta la instalacion
+verificamos que cypress se ha instalado correctamentne 
+consola
+node_modules\.bin\cypress open 
+abre cypress
+-----------------------------------------------------------------------------------------------------------------
+si no abre cypress porque faltan carpetas de instalacion
+Npx instalacion https://www.npmjs.com/package/Npx
+npm cypress install --force
+npm install -g npx
+npx cypress install --force
+npx cypress open
+------------------------------------------------------------------------------------------------------------------
+en cypress e2e
+nueva carpeta tengo que terminarla con 
+nombre .cy.js
+ -------------------------------------------------
+  it("Esto es mi primer hola mundo en Cypress", () =>{ 
+        cy.log("Bienbenido a Cypress")
+        cy.visit('https://buggy.justtestit.org/')
+        cy.wait(3000)
+
+        cy.get(".btn-success-outline").click()
+        cy.wait(3000)
+        cy.get("#username").type("yhosua")
+---------------------------------------------------
+con control+c paramos la consola
+
+Para selleccion de elementos del dom con id usamos# para clase usamos .
+con cy.visit // lo que hacemos es entrar en la paguina que deseamos
+con cy.log// mostramos por consola lo que deseemos
+con cy.get // seleccionamos o indicamos la parte del dom que queremos
+con cy.type // escribimos desde teclado despues de nuestra seleccion
+con cy.wait // damos un tiempo de espera
+con cy.title lo que vemos es el titulo de la paguina y 
+con .should('eq', 'nombre del titulo') lo que hacemos es commparar que sea igual
+con type("valor a escribir {enter}") lo que hacemos despues de escribir es presionar enter
+con .click() realizamos un clickde raton
+con .type('{pagedown}') .type('{pageup}') subimos o bajamos scroll
+con cy.get("#userName").type('{pageup}') buscamos el campo username y realizamos scroll hacia abajo
+con cy.get("#userName").type('{pagedown}') buscamos el campo realizamos scroll hacia arriba
+con ty.only solo correra esa prueba
+con .click({force: true}) forzamos el click no se para que se usa
+con cy.xpath("//*[@id='userName']") lo usamos asi para poner la ruta en vez de .get poner arriba require('cypress-xpath')
+con cy.get(".custom-control-label").contains("Female").click() aqui lo que hacemos es buscar por etiqueta que contenga Female
+con .should("be.visible").should("be.enabled") buscamos sea visible y este habilitado
+con .clear()limpiamos lo que se encuentre escrito
+con cy.contains("Gentry") buscamos que contenga esta palabra
+con .tab().type("")lo que hacemos es tabular ejemplo formulario necesita instalar y poner un require
+con .select("Nokia") usado para desplegable co n la opcion
+con .should("have.value","16") queremos que tambien coincida se valide el valor con el 16 segundoReto
+con.check() si es un checkbox o un :radio podremos ticarlo seleccionarlo
+con .check().should("be.cheked")miramos cuantoss check box estan seleccionados
+con .uncheck().should("not.be.checked") para deseleccioar todos
+
+---------------------------------------------------------------------------------------
+para usar el tabulador instalar en consola                                       λ npm install -D cypress-plugin-tab
+añadir en la parte superior una linea de codigo para poder usar el Tab              require('cypress-plugin-tab')
+con .tab saltamos de al siguiente recuadro
+--------------------------------------------------------------------------------------------------------------------------------------
+con cy.get("#firstName").should("be.visible").type("juan") buscamos selector y preguntamos si es visible si lo es con type escribimos
+con  cy.get("#userEmail").should("be.visible").should("be.enabled").type("yhosua@gmail.com") buscamos que sea visible y este habilitado
+y entonces con type escribimos
+------------------------------------------------------------------------------------------------
+cy.get("#searchBox").should("be.enabled").clear() buscamos elemento y con .clean limpiamos o eliminamos lo que se encuentre
+cy.get("[placeholder='Full Name']").should("be.visible").type("jose") buscamos por su atributo en vez de por id
+con cy.xpath("//*[@id='userName']") lo usamos asi para poner la ruta no con .get
+-------------------------------------------------------------------------------------------------------------------------------
+//tenemos extensiones de crome como el chroPath o el TruePath para facilitar la localaizacion xpath,clases,id
+//buscamos por la clase y despues con contains que contenga ese texto 
+//CSS and XPath checker añadimos esta extension de crome
+//placeholder significa que en el text box sale por defecto uan escrito guia*
+//assert significa validaciones
+...........................................................................................................................
+LOCALIZADOR DE RUTA XPATH Y CSS SELECTOR CON EXTENSIONES CROME
+
+cy.get(input#userName[type='text']) estamos indicando lo que quremos usar definiendo el type el id y tipo de elemento para mas exactitud
+con //button[@id='submit'] lo que hacemos es utilizar una xpath para asegurar la seleccion usando extension de crome 
+con // umos para xpath con #usamos para css usamos esto para añadir mas datos no solo usar id sino completarlo
+........................................................................................................................
+DEFINIR OPCIONES A LA HORA DE BUSCAR SELECTORES
+cy.get("//input[@id='userName or @type='text'"]) indicamos que puede ser por id tal o  type lo que sea que coincida 1
+cy.get("//input[@id='userName and @type='text'"]) indicamos que coincida id y  type que coincidan los 2
+
+
+SELECCIONAR UN ELEMENTO SIN ATRIBUTO EJEMPPLO EL TEXT EN TOLLSQA
+cy.get("//div[text()='Text Box']) 1tipo de elemento 2 del tipo text entre'' el tipo de elemento que queremos
+SELECCIONAR EN LA PAGINA DINAMIC PROPERTIES USANDO LA EXTENSIONES
+cy.get("//span[text()='Dynamic Properties']) 1tipo de elemento span 2º del tipo text entre''ponemos el texto que tiene como tal
+video 78
+cy.get("//span[contains(text(),'box')]) lo que hacemos aqui es buscar un tipo span que tenga la palabra box
+----------------------------------------------------------------------------------------------------------------------
+modificado
